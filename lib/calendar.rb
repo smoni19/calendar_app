@@ -1,12 +1,9 @@
 require 'date'
-require 'fixnum'
+require_relative 'fixnum'
 
 class Calendar
 
-  attr_reader :days
-
-  def initialize
-  end
+  attr_reader :days, :twoD_day_array
 
   def get_days(year = DateTime.now.year, month)
 		@days = []
@@ -17,8 +14,10 @@ class Calendar
       @twoD_day_array << [day_string.split.first, date.ordinalize, 'of', day_string.split(' ')[2], year]
       @days << day_string
     end
-    @twoD_day_array.each do |date|
-      p date.join(' ')
-    end
+    @twoD_day_array
+    #@twoD_day_array.each do |date|
+    #  p date.join(' ')
+    #end
   end
+  
 end
