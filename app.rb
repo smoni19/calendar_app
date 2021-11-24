@@ -14,7 +14,12 @@ class CalendarApp < Sinatra::Base
 
   get '/' do
     c = Calendar.new
-    @days = c.get_days(2021, 11)
+    @days = c.get_days(DateTime.now.year, DateTime.now.month)
+    @month = DateTime.now.month
+    @year = DateTime.now.year
+    @next_month = @month.to_i+1
+    @next_year = @year.to_i+1
+    session[:year] = @year
     erb :index
   end
 
